@@ -1,5 +1,7 @@
 import { Fragment } from "react";
 import { useEffect, useState } from "react";
+import {useDispatch, useSelector} from "react-redux";
+import {fetchMainData} from "../../actions/mainAction";
 
 
 function Home() {
@@ -9,6 +11,11 @@ function Home() {
         script.async = true;
         document.body.appendChild(script);
     }, []);
+    const dispatch = useDispatch();
+    useEffect(() => {
+        dispatch(fetchMainData());
+    }, [])
+    const mainData = useSelector(state => state.mains.main_data);
     return (
 
         <>
@@ -47,7 +54,7 @@ function Home() {
                                 </ul>
                             </div>
                             <span className="image object">
-										<img src="images/pic10.jpg" alt=""/>
+										<img src={mainData.length > 0 ? mainData[0].first_image : "images/pic10.jpg"} alt={mainData.length > 0 ? mainData[0].title : "Default"} />
 									</span>
                         </section>
                         <section>
