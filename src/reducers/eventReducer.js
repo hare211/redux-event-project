@@ -1,8 +1,9 @@
-import { FETCH_EVENT_LIST} from "../actions/types";
+import {FETCH_EVENT_DETAIL, FETCH_EVENT_LIST} from "../actions/types";
 
 
 const eventState = {
     eventList: [],
+    eventDetail: {}
 }
 
 export default (state = eventState, action) => {
@@ -13,6 +14,11 @@ export default (state = eventState, action) => {
                 eventList: action.payload.list,
                 totalPage: action.payload.totalPage,
                 page: action.payload.page,
+            }
+        case FETCH_EVENT_DETAIL:
+            return {
+                ...state,
+                eventDetail: action.payload
             }
         default:
             return state

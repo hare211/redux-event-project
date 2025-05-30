@@ -2,13 +2,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import Layout from "../Layout";
 import { fetchEventList } from "../../actions/eventAction";
+import {Link} from "react-router-dom";
 
 function EventList() {
     const dispatch = useDispatch();
     const { eventList, totalPage, page } = useSelector(state => state.events);
     const [curPage, setCurPage] = useState(0);
 
-    const pageSize = 10;
     const totalPages = totalPage;
 
     const blockSize = 10; // 한 번에 보여줄 페이지 수
@@ -48,6 +48,7 @@ function EventList() {
 
                         <section>
                             {Array.isArray(eventList) && eventList.map((event, index) => (
+                                <Link to={`/event/detail/${event.content_id}`} key={event.content_id} style={{ textDecoration: "none", color: "inherit" }}>
                                 <div className="box" key={index} style={{ display: "flex", gap: "2rem", marginBottom: "2rem" }}>
                                     <div style={{ flex: "0 0 300px" }}>
                                         <img
@@ -58,10 +59,11 @@ function EventList() {
                                     </div>
                                     <div style={{ flex: 1 }}>
                                         <h2>{event.title}</h2>
-                                        <p><strong>주소:</strong> {event.addr1}</p>
+                                        <p>{event.addr1}</p>
                                         <p>{event.infotext}</p>
                                     </div>
                                 </div>
+                                </Link>
                             ))}
                         </section>
 
@@ -70,29 +72,45 @@ function EventList() {
                             <div className="pagination-area d-sm-flex mt-15">
                                 <nav>
                                     <ul className="pagination">
-                                        {startPage > 0 && (
-                                            <li className="page-item">
-                                                <a href="#" className="page-link" onClick={(e) => { e.preventDefault(); handlePrev(); }}>Prev</a>
+                                        {startPage > 0 ? (
+                                            <li>
+                                                <a href="#" className="button" onClick={(e) => { e.preventDefault(); handlePrev(); }}>Prev</a>
+                                            </li>
+                                        ) : (
+                                            <li>
+                                                <span className="button disabled">Prev</span>
                                             </li>
                                         )}
 
                                         {Array.from({ length: endPage - startPage }, (_, i) => {
                                             const pageNum = startPage + i;
                                             return (
-                                                <li key={pageNum} className={`page-item ${pageNum === curPage ? 'active' : ''}`}>
-                                                    <a href="#" className="page-link" onClick={(e) => { e.preventDefault(); handlePageClick(pageNum); }}>
+                                                <li key={pageNum}>
+                                                    <a
+                                                        href="#"
+                                                        className={`page ${pageNum === curPage ? "active" : ""}`}
+                                                        onClick={(e) => {
+                                                            e.preventDefault();
+                                                            handlePageClick(pageNum);
+                                                        }}
+                                                    >
                                                         {pageNum + 1}
                                                     </a>
                                                 </li>
                                             );
                                         })}
 
-                                        {endPage < totalPages && (
-                                            <li className="page-item">
-                                                <a href="#" className="page-link" onClick={(e) => { e.preventDefault(); handleNext(); }}>Next</a>
+                                        {endPage < totalPages ? (
+                                            <li>
+                                                <a href="#" className="button" onClick={(e) => { e.preventDefault(); handleNext(); }}>Next</a>
+                                            </li>
+                                        ) : (
+                                            <li>
+                                                <span className="button disabled">Next</span>
                                             </li>
                                         )}
                                     </ul>
+
                                 </nav>
                                 <div className="page-status">
                                     <p>Page {curPage + 1} of {totalPages}</p>

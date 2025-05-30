@@ -1,5 +1,5 @@
 import axios from "axios";
-import {FETCH_EVENT_LIST} from "./types";
+import {FETCH_EVENT_DETAIL, FETCH_EVENT_LIST} from "./types";
 
 
 export const fetchEventList = (page) => async dispatch => {
@@ -20,6 +20,18 @@ export const fetchEventList = (page) => async dispatch => {
         })
 
 
+    } catch (err) {
+        console.error('err: ', err);
+    }
+}
+
+export const fetchEventDetail = (contentId) => async dispatch => {
+    try {
+        const res = await axios.get('http://localhost/api/events/details/' + contentId);
+        dispatch({
+            type: FETCH_EVENT_DETAIL,
+            payload: res.data,
+        })
     } catch (err) {
         console.error('err: ', err);
     }

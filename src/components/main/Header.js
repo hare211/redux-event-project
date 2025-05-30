@@ -1,9 +1,10 @@
 import React from "react";
+import {Link} from "react-router-dom";
 
 function Header() {
     return (
         <header id="header">
-            <a href="index.html" className="logo"><strong>Festival</strong> by hare</a>
+            <Link to="/" className="logo"><strong>Festival</strong> by hare</Link>
             <ul className="icons">
                 <li><a href="#" className="icon brands fa-twitter"><span className="label">Twitter</span></a></li>
                 <li><a href="#" className="icon brands fa-facebook-f"><span className="label">Facebook</span></a></li>

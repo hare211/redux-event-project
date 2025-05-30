@@ -6,6 +6,7 @@ import BoardList from "./components/board/BoardList";
 import BoardWrite from "./components/board/BoardWrite";
 import BoardDetail from "./components/board/BoardDetail";
 import EventList from "./components/event/EventList";
+import EventDetail from "./components/event/EventDetail";
 
 
 
@@ -20,6 +21,7 @@ function App() {
           <Route path="/board/write" element={<BoardWrite />} />
           <Route path="/board/detail/:no" element={<BoardDetail />} />
           <Route path="/event/list" element={<EventList />} />
+          <Route path="/event/detail/:content_id" element={<EventDetail />} />
         </Routes>
       </Router>
       </Provider>

@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchEventDetails, fetchMainData } from "../../actions/mainAction";
 import Layout from "../Layout";
+import {Link} from "react-router-dom";
 
 function Home() {
     const dispatch = useDispatch();
@@ -52,13 +53,13 @@ function Home() {
                 <div className="posts">
                     {eventDetails.map((details, i) => (
                         <article key={i}>
-                            <a href="#" className="image">
+                            <Link to={`/event/detail/${details.content_id}`} className="image">
                                 <img
                                     src={details.first_image}
                                     alt=""
                                     className="fixed-size-img"
                                 />
-                            </a>
+                            </Link>
                             <h3>{details.title}</h3>
                             <p>{details.addr1}</p>
                             <p>{details.infotext}</p>
