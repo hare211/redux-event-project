@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
-function Write() {
+function BoardWrite() {
     const navigate = useNavigate();
     const [form, setForm] = useState({
         name: "",
@@ -81,4 +81,4 @@ function Write() {
     );
 }
 
-export default Write;
+export default BoardWrite;

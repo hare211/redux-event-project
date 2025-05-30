@@ -15,7 +15,7 @@ function Sidebar() {
                     <header className="major"><h2>Menu</h2></header>
                     <ul>
                         <li><a href="/">Homepage</a></li>
-                        <li><a href="/public">Festival List</a></li>
+                        <li><a href="/event/list">Festival List</a></li>
                         <li><a href="/board/list">Free Board</a></li>
                         <li><span className="opener">Submenu</span>
                             <ul>

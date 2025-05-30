@@ -4,7 +4,7 @@ import Layout from "../Layout";
 import { Link } from "react-router-dom";
 import {fetchBoardList} from "../../actions/boardAction";
 
-function List() {
+function BoardList() {
     const dispatch = useDispatch();
     const boardList = useSelector(state => state.boards.boardList); // 예시용, 실데이터 필요
 
@@ -53,4 +53,4 @@ function List() {
     );
 }
 
-export default List;
+export default BoardList;

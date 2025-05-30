@@ -1263,7 +1263,7 @@ a.image {
     -ms-transform: scale(1.075);
     transform: scale(1.075); }
 
-/* List */
+/* BoardList */
 ol {
   list-style: decimal;
   margin: 0 0 2em 0;
@@ -1295,6 +1295,36 @@ dl {
     margin: 0 0 1em 0; }
   dl dd {
     margin-left: 2em; }
+
+ul.pagination {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding: 0;
+  list-style: none;
+}
+
+ul.pagination li.page-item a.page-link {
+  display: block;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  color: #555;
+  text-decoration: none;
+  background-color: #fff;
+  transition: all 0.2s;
+}
+
+ul.pagination li.page-item a.page-link:hover {
+  background-color: #f0f0f0;
+}
+
+ul.pagination li.page-item.active a.page-link {
+  background-color: #007bff;
+  color: white;
+  border-color: #007bff;
+}
+
 
 /* Actions */
 ul.actions {
