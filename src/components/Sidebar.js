@@ -1,6 +1,6 @@
 
 import React from "react";
-import Footer from "./Footer";
+import Footer from "./main/Footer";
 
 function Sidebar() {
     return (
@@ -14,9 +14,9 @@ function Sidebar() {
                 <nav id="menu">
                     <header className="major"><h2>Menu</h2></header>
                     <ul>
-                        <li><a href="index.html">Homepage</a></li>
-                        <li><a href="generic.html">Generic</a></li>
-                        <li><a href="elements.html">Elements</a></li>
+                        <li><a href="/">Homepage</a></li>
+                        <li><a href="/public">Festival List</a></li>
+                        <li><a href="/board/list">Free Board</a></li>
                         <li><span className="opener">Submenu</span>
                             <ul>
                                 <li><a href="#">Lorem Dolor</a></li>
