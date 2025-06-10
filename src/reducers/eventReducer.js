@@ -1,4 +1,4 @@
-import {FETCH_EVENT_DETAIL, FETCH_EVENT_LIST} from "../actions/types";
+import {FETCH_EVENT_DETAIL, FETCH_EVENT_LIST, FETCH_EVENT_TODAY} from "../actions/types";
 
 
 const eventState = {
@@ -14,6 +14,11 @@ export default (state = eventState, action) => {
                 eventList: action.payload.list,
                 totalPage: action.payload.totalPage,
                 page: action.payload.page,
+            }
+        case FETCH_EVENT_TODAY:
+            return {
+                ...state,
+                eventToday: action.payload
             }
         case FETCH_EVENT_DETAIL:
             return {

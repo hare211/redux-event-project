@@ -19,11 +19,9 @@ function EventDetail() {
 
     return (
         <Layout>
-            <h2>이벤트 상세 페이지</h2>
-            <p>선택한 content_id: {content_id}</p>
-
+            <h2>행사 상세</h2>
             {eventDetail?.first_image && (
-                <img src={eventDetail.first_image} alt={eventDetail.title} style={{ maxWidth: "100%" }} />
+                <img src={eventDetail.first_image} alt={eventDetail.title} className={"centered-img"} style={{ maxWidth: "100%", marginBottom: "10px" }} />
             )}
 
             <div className={"box"}>

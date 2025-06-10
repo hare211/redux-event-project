@@ -42,7 +42,7 @@ function EventList() {
                 <div id="main">
                     <div className="inner">
                         <header>
-                            <h1>이벤트 목록</h1>
+                            <h1>행사 목록</h1>
                             <p>진행 중인 다양한 행사들을 한눈에 확인하세요.</p>
                         </header>
 

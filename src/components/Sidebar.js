@@ -1,8 +1,19 @@
 
-import React from "react";
+import React, {useEffect} from "react";
 import Footer from "./main/Footer";
+import {useDispatch, useSelector} from "react-redux";
+import {fetchTodayEventList} from "../actions/eventAction";
 
 function Sidebar() {
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(fetchTodayEventList());
+    }, [dispatch])
+
+    const todayEvents = useSelector(state => state.events.eventToday);
+
+    console.log(todayEvents);
     return (
         <div id="sidebar">
             <div className="inner">
@@ -17,14 +28,16 @@ function Sidebar() {
                         <li><a href="/">Homepage</a></li>
                         <li><a href="/event/list">Festival List</a></li>
                         <li><a href="/board/list">Free Board</a></li>
-                        <li><span className="opener">Submenu</span>
+
+                        {/*<li><span className="opener">Submenu</span>
                             <ul>
                                 <li><a href="#">Lorem Dolor</a></li>
                                 <li><a href="#">Ipsum Adipiscing</a></li>
                                 <li><a href="#">Tempus Magna</a></li>
                                 <li><a href="#">Feugiat Veroeros</a></li>
                             </ul>
-                        </li>
+                        </li>*/}
+                        {/*
                         <li><a href="#">Etiam Dolore</a></li>
                         <li><a href="#">Adipiscing</a></li>
                         <li><span className="opener">Another Submenu</span>
@@ -38,14 +51,24 @@ function Sidebar() {
                         <li><a href="#">Maximus Erat</a></li>
                         <li><a href="#">Sapien Mauris</a></li>
                         <li><a href="#">Amet Lacinia</a></li>
+                        */}
                     </ul>
                 </nav>
                 <section>
-                    <header className="major"><h2>Ante interdum</h2></header>
+                    <header className="major"><h2>오늘의 행사</h2></header>
                     <div className="mini-posts">
-                        <article><a href="#" className="image"><img src="images/pic07.jpg" alt=""/></a><p>Aenean ornare velit lacus...</p></article>
-                        <article><a href="#" className="image"><img src="images/pic08.jpg" alt=""/></a><p>Aenean ornare velit lacus...</p></article>
-                        <article><a href="#" className="image"><img src="images/pic09.jpg" alt=""/></a><p>Aenean ornare velit lacus...</p></article>
+                        {todayEvents?.length > 0 ? (
+                            todayEvents.map((event, idx) => (
+                                <article key={idx}>
+                                    <a href={`/event/detail/${event.content_id}`} className="image">
+                                        <img src={event.first_image || "images/placeholder.jpg"} alt={event.title} />
+                                    </a>
+                                    <p>{event.title}</p>
+                                </article>
+                            ))
+                        ) : (
+                            <p>오늘의 행사가 없습니다.</p>
+                        )}
                     </div>
                     <ul className="actions"><li><a href="#" className="button">More</a></li></ul>
                 </section>

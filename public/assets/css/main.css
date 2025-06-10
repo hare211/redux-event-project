@@ -1,5 +1,7 @@
 @import url(fontawesome-all.min.css);
-@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,600,400italic,600italic|Roboto+Slab:400,700");
+/*@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,600,400italic,600italic|Roboto+Slab:400,700");*/
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
+
 /*
 	Editorial by HTML5 UP
 	html5up.net | @ajlkn
@@ -2307,3 +2309,11 @@ button,
     border-top: 0;
     margin-top: 0;
     padding-top: 0; }
+
+
+.centered-img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 100%;
+}
